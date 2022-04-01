@@ -19,13 +19,12 @@ router.get("/:id", getUser, (req, res) => {
 
 // Creating a user
 router.post("/", async (req, res) => {
-
-    const userExists = await User.exists({ name: req.body.name });
-
+    let userExists = await User.exists({ name: req.body.name });
     if (userExists) {
         res.status(400).json({ message: "Name is already in use"})
         return;
     }
+
     const user = new User({
         name: req.body.name,
         age: req.body.age
@@ -40,6 +39,12 @@ router.post("/", async (req, res) => {
 
 // Updating a user
 router.patch("/:id", getUser, async (req, res) => {
+    let userExists = await User.exists({ name: req.body.name });
+    if (userExists) {
+        res.status(400).json({ message: "Name is already in use"})
+        return;
+    }
+
     if (req.body.name != null) {
         res.user.name = req.body.name;
     }
