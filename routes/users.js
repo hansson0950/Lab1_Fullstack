@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
+const User = require("../models/user");
 
 // Getting all users
 router.get("/", async (req, res) => {
@@ -19,6 +19,13 @@ router.get("/:id", getUser, (req, res) => {
 
 // Creating a user
 router.post("/", async (req, res) => {
+
+    const userExists = await User.exists({ name: req.body.name });
+
+    if (userExists) {
+        res.status(400).json({ message: "Name is already in use"})
+        return;
+    }
     const user = new User({
         name: req.body.name,
         age: req.body.age
