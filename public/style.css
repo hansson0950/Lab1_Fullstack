@@ -1,0 +1,9 @@
+.popup {
+    position: relative;
+    display: inline-block;
+    visibility: hidden;
+}
+
+.submit:hover {
+    cursor: pointer;
+}

@@ -1,12 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <link rel="stylesheet" href="style.css" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <table id="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h1>Edit user</h1>
+            <form>
+                <label type="text" for="updateName">Name:</label>
+                <input type="text" id="updateName"><br>
+                <label type="text" for="updateAge">Age:</label>
+                <input type="text" id="updateAge">
+                <p id="updateError"></p>
+            </form>
+        </div>
+        <div>
+            <h1>Create new user</h1>
+            <form id="registerUser">
+                <label for="registerName">Name:</label>
+                <input type="text" id="registerName"><br>
+                <label for="registerAge">Age:</label>
+                <input type="text" id="registerAge">
+                <button class="submit">Submit</button>
+                <p id="registerError"></p>
+            </form>
+        </div><br>
+        <div id="detailsPopup" class="popup">
+            <form>
+                <span><b>User details</b></span><br>
+                <span>ID:</span>
+                <span id="userID"></span><br>
+                <span>Name:</span>
+                <span id="userName"></span><br>
+                <span>Age:</span>
+                <span id="userAge"></span><br>
+                <span>Date joined:</span>
+                <span id="userJoinDate"></span><br>
+                <button onclick="closeDetails()">Close</button>
+            </form>
+        </div>
+    </body>
+    <script src="script.js"></script>
 </html>

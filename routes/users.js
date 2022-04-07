@@ -21,8 +21,7 @@ router.get("/:id", getUser, (req, res) => {
 router.post("/", async (req, res) => {
     let userExists = await User.exists({ name: req.body.name });
     if (userExists) {
-        res.status(400).json({ message: "Name is already in use"})
-        return;
+        return res.status(409).json({ message: "Name is already in use"});
     }
 
     const user = new User({
@@ -41,8 +40,7 @@ router.post("/", async (req, res) => {
 router.patch("/:id", getUser, async (req, res) => {
     let userExists = await User.exists({ name: req.body.name });
     if (userExists) {
-        res.status(400).json({ message: "Name is already in use"})
-        return;
+        return res.status(409).json({ message: "Name is already in use"});
     }
 
     if (req.body.name != null) {
