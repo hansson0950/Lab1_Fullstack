@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="style.css" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Document</title>
+        <title>Home Page</title>
     </head>
     <body>
         <div>
@@ -14,7 +14,7 @@
                     <th>Age</th>
                 </tr>
             </table>
-        </div>
+        </div><br>
         <div>
             <h1>Edit user</h1>
             <form>
@@ -24,7 +24,7 @@
                 <input type="text" id="updateAge">
                 <p id="updateError"></p>
             </form>
-        </div>
+        </div><br>
         <div>
             <h1>Create new user</h1>
             <form id="registerUser">
@@ -38,14 +38,14 @@
         </div><br>
         <div id="detailsPopup" class="popup">
             <form>
-                <span><b>User details</b></span><br>
-                <span>ID:</span>
+                <h3>User details</h3>
+                <span><b>ID:</b></span>
                 <span id="userID"></span><br>
-                <span>Name:</span>
+                <span><b>Name:</b></span>
                 <span id="userName"></span><br>
-                <span>Age:</span>
+                <span><b>Age:</b></span>
                 <span id="userAge"></span><br>
-                <span>Date joined:</span>
+                <span><b>Date joined:</b></span>
                 <span id="userJoinDate"></span><br>
                 <button onclick="closeDetails()">Close</button>
             </form>
