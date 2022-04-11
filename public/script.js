@@ -95,53 +95,29 @@ function updateUser(rowNumber) {
     .then(response => {
         JSON.stringify(response);
         var id = response[rowNumber]._id;
+        var updateDetails;
 
         if (updateName.value == "") {
-            const updateDetails = { age: updateAge.value }
-            fetch("api/users/" + id, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(updateDetails)
-            })
-            .then(response => {
-                if (!response.ok) return updateError.innerHTML = "Error";
-                return location.reload();
-            });
+            updateDetails = { age: updateAge.value }
+        } else if (updateAge.value == "") {
+            updateDetails = { name: updateName.value }
+        } else {
+            updateDetails = {
+                name: updateName.value,
+                age: updateAge.value
+            }
         }
-
-        else if (updateAge.value == "") {
-            const updateDetails = { name: updateName.value }
-            fetch("api/users/" + id, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(updateDetails)
-            })
-            .then(response => {
-                if (!response.ok) return updateError.innerHTML = "Error";
-                return location.reload();
-            });
-        }
-        else {
-            const updateDetails = {
-            name: updateName.value,
-            age: updateAge.value
-            };
-            fetch("api/users/" + id, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(updateDetails)
-            })
-            .then(response => {
-                if (!response.ok) return updateError.innerHTML = "Error";
-                location.reload();
-            });
-        }
+        fetch("api/users/" + id, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updateDetails)
+        })
+        .then(response => {
+            if (!response.ok) return updateError.innerHTML = "Error";
+            location.reload();
+        });
     });
 }
 
